@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MethodsOption方法选项</title>
+    <script src="../asses/js/vue.js"></script>
+</head>
+<body>
+<h1>MethodsOption方法选项</h1>
+<hr>
+
+<div id="app">
+    {{a}}
+    <button @click="add(1,$event)">add</button>
+    <p><btn @click.native="add(2,$event)"></btn></p>
+</div>
+<button onclick="app.add(3)">外部ADD</button>
+<script>
+    var btn={
+        template:`<button>组件ADD</button>`
+    };
+    var app=new Vue({
+        el:"#app",
+        data:{
+            a:0,
+        },
+        components:{
+            'btn':btn
+        },
+        methods:{
+            add:function (num) {
+                console.log(num);
+                if(num!=''){
+                    this.a+=num
+                }else{
+                    this.a++;
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

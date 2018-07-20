@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>example-03实例事件</title>
+    <script src="../asses/js/vue.js"></script>
+</head>
+<body>
+<h1>example-03实例事件</h1>
+<hr>
+
+<div id="app">
+    {{num}}
+    <button @click="add">add</button>
+</div>
+<button onclick="reduce()">reduce</button>
+<button onclick="reduceOnce()">reduceOnce</button>
+<button onclick="off()">off</button>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            num:1
+        },
+        methods:{
+            add:function () {
+                this.num++;
+            }
+        }
+    });
+    app.$on('reduce',function () {
+        this.num--;//on需要emit调用
+    });
+    app.$once('reduceOnce',function () {
+        this.num--;
+    });
+    function reduce() {
+        app.$emit('reduce');//外部调用
+    }
+    function reduceOnce() {
+        console.log("只调用一次");
+        app.$emit('reduceOnce');//外部调用
+    }
+    function off() {
+        app.$off('reduce');//关闭事件
+    }
+</script>
+</body>
+</html>

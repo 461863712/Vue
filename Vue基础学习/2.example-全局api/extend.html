@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>extend</title>
+    <script src="../asses/js/vue.js"></script>
+</head>
+<body>
+<h1>extend</h1>
+<hr>
+
+<author></author>
+<div id="author"></div><!--这个好-->
+
+<script>
+    var authorExtend = Vue.extend({
+        template:"<p><a :href='authorUrl'>{{authorName}}</a></p>",
+        data:function () {
+            return {
+                authorName:"jsPang",
+                authorUrl:"http://jspang.com"
+            }
+        }
+    });
+    //挂载
+    new authorExtend().$mount("author");
+    new authorExtend().$mount("#author");
+</script>
+</body>
+</html>

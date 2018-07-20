@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+    <script src="../asses/js/vue.js"></script>
+</head>
+<style>
+    .classA{
+      color: red;
+    }
+    .classB{
+        font-size: 30px;
+    }
+</style>
+<body>
+<h1>v-bind</h1>
+<hr>
+<div id="app">
+    <img v-bind:src="imgSrc">
+    <a :href="webUrl" target="_blank">技术胖</a>
+
+    <div :class="className">绑定class1</div>
+    
+    <div>
+        <div :class="{classA:isOk}">绑定class2</div>
+        <input type="checkbox" id="isOk" v-model="isOk">
+        <label for="isOk">isOk={{isOk}}</label>
+        <div :class="[classA,classB]">绑定class3</div>
+        <div :class="isOk?classA:classB">绑定class(三元运算符)</div>
+
+    </div>
+    <hr>
+    <div :style="{color:red,background:bcg}">5绑定style</div>
+    <div :style="styleObject">6、对象绑定style</div>
+</div>
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            imgSrc:"../asses/image/redPacket.png",
+            webUrl:"http://www.jspang.com",
+            className:"classA",
+            isOk:true,
+            classA:"classA",
+            classB:"classB",
+            red:"red",
+            bcg:"blue",
+            styleObject:{
+                color:"green",
+                fontSize:"20px"
+            }
+        }
+    })
+</script>
+</body>
+</html>

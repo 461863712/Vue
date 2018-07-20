@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>example-02实例方法</title>
+    <script src="../asses/js/vue.js"></script>
+    <script src="../asses/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<h1>example-02实例方法</h1>
+<hr>
+
+<div id="app">
+
+</div>
+<button onclick="destroy()">销毁</button>
+<button onclick="reload()">刷新</button>
+<button onclick="tick()">修改</button>
+<script>
+    var jsPang = Vue.extend({
+        template:`<p>{{message}}</p>`,
+        data:function () {
+            return {
+                message:"Hello"
+            }
+        },
+        mounted:function () {
+            console.log("mounted-被创建");
+        },
+        destroyed:function () {
+            console.log("destroyed-被销毁");
+        },
+        updated:function () {
+            console.log("updated-更新之后");
+        }
+    });
+    var vm=new jsPang();
+    vm.$mount("#app");
+    function destroy() {
+        vm.$destroy();
+    }
+    function reload() {
+        vm.$forceUpdate();//刷新
+    }
+    function tick() {
+        vm.message="World";
+        vm.$nextTick(function () {
+            console.log("tick-修改");
+        });
+    }
+</script>
+</body>
+</html>

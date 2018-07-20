@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mixins混入选项操作</title>
+    <script src="../asses/js/vue.js"></script>
+</head>
+<body>
+<h1>Mixins混入选项操作</h1>
+<hr>
+
+<div id="app">
+    {{num}}
+    <button @click="add">add</button>
+</div>
+
+<script>
+    var addConsole={
+        updated:function () {
+            //混入的先执行
+            console.log('数据发生变化'+this.num);
+        }
+    };
+    Vue.mixin({
+        updated:function () {
+            console.log('全局混入'+this.num);
+        }
+    });
+    var app=new Vue({
+        el:"#app",
+        data:{
+            num:1
+        },
+        methods:{
+            add:function () {
+                this.num++;
+            }
+        },
+        updated:function(){
+            console.log('原生'+this.num);
+        },
+        mixins:[addConsole]
+    });
+</script>
+</body>
+</html>

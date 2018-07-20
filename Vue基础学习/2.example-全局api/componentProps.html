@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component 组件props 属性设置</title>
+    <script src="../asses/js/vue.js"></script>
+</head>
+<body>
+<h1>Component 组件props 属性设置</h1>
+<hr>
+
+<div id="app">
+    <panda v-bind:form-here="message"></panda>
+</div>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            message:"China"
+        },
+        components:{
+            "panda":{
+                template:`<div style="color: green;">Panda from {{formHere}}</div>`,
+                props:["formHere"]//数组,有-变为大写
+            }
+        }
+    });
+</script>
+</body>
+</html>

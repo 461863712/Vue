@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>propsDataOption全局扩展的数据传递</title>
+    <script src="../asses/js/vue.js"></script>
+</head>
+<body>
+<h1>propsDataOption全局扩展的数据传递</h1>
+<hr>
+
+<div id="header"></div>
+
+<script>
+    var header_a=Vue.extend({
+        template:`<p>{{message}}-{{a}}</p>`,
+        data:function () {
+            return {
+                message:"Hello World"
+            }
+        },
+        props:['a']
+    });
+    new header_a({propsData:{a:10}}).$mount('#header');
+</script>
+</body>
+</html>

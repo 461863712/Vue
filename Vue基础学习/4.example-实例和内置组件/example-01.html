@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>example-01实例入门-实例属性</title>
+    <script src="../asses/js/vue.js"></script>
+    <script src="../asses/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<h1>example-01实例入门-实例属性</h1>
+<hr>
+
+<div id="app">
+    {{num}}
+</div>
+
+<script>
+
+    var app=new Vue({
+        el:"#app",
+        data:{
+            num:1
+        },
+        mounted:function () {
+            //挂载结束后使用jquery
+            $("#app").html("我是jquery")
+        },
+        methods:{
+            add:function () {
+                console.log("调用了构造器内部的add方法");
+            }
+        }
+    });
+    app.add();
+</script>
+</body>
+</html>

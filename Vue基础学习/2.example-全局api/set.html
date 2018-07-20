@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>set</title>
+    <script src="../asses/js/vue.js"></script>
+</head>
+<body>
+<h1>set</h1>
+<hr>
+
+<div id="app">
+    {{count}}
+    <ul>
+        <li v-for="item in arr">{{item}}</li>
+    </ul>
+</div>
+<button onclick="add()">add</button>
+<script>
+    function add() {
+        // Vue.set(outData,"count",2);
+        // app.count++;
+        outData.count++;
+        // app.arr[1]="ccc";//数组有限制
+        Vue.set(app.arr,1,"ccc")
+    }
+    var outData={
+        count:1,
+        goods:"car",
+        arr:['qqq','www','eee']
+    };
+    var app=new Vue({
+        el:"#app",
+        data:outData
+    });
+</script>
+</body>
+</html>
